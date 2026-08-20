@@ -3,346 +3,778 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk My Baey 💜</title>
+<title>Special For You, My Baey 💜</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:Georgia,serif;
-color:white;
-background:
-radial-gradient(circle at top,#8d4b91,#32133e 45%,#100713);
-min-height:100vh;
-overflow-x:hidden
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.container{max-width:800px;margin:auto;padding:20px}
-.card{
-background:rgba(255,255,255,.1);
-border:1px solid rgba(255,255,255,.2);
-backdrop-filter:blur(15px);
-border-radius:28px;
-padding:25px;
-margin:18px 0;
-box-shadow:0 15px 50px #0005
+
+html {
+    scroll-behavior: smooth;
 }
-.center{text-align:center}
-.hidden{display:none}
-h1{font-size:55px;margin:15px 0}
-h2{color:#ffd9f5}
-p{font-size:17px;line-height:1.8}
-button{
-border:0;
-padding:15px 25px;
-border-radius:30px;
-font-weight:bold;
-font-size:16px;
-background:linear-gradient(135deg,#ffd2f1,#c68bd8);
-color:#351139
+
+body {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(125, 35, 180, .18), transparent 30%),
+        radial-gradient(circle at 10% 80%, rgba(150, 30, 110, .10), transparent 25%),
+        #070609;
+    color: #f7f2fa;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
-input{
-width:100%;
-padding:16px;
-border:0;
-border-radius:15px;
-font-size:18px;
-text-align:center;
-margin:15px 0
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(180, 70, 255, .08), transparent 2%),
+        radial-gradient(circle at 80% 30%, rgba(255, 80, 180, .06), transparent 2%),
+        radial-gradient(circle at 50% 75%, rgba(150, 50, 255, .05), transparent 3%);
+    z-index: 0;
 }
-.hero{padding:40px 20px}
-.heart{
-font-size:65px;
-animation:pulse 1.5s infinite
+
+/* PASSWORD */
+
+#lockscreen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    position: relative;
+    z-index: 2;
 }
-@keyframes pulse{
-50%{transform:scale(1.15)}
+
+.lock-card {
+    width: 100%;
+    max-width: 430px;
+    text-align: center;
+    padding: 45px 28px;
+    border: 1px solid rgba(183, 91, 255, .30);
+    border-radius: 28px;
+    background: rgba(14, 10, 17, .88);
+    box-shadow:
+        0 0 60px rgba(145, 48, 210, .15),
+        inset 0 0 35px rgba(150, 50, 255, .035);
+    backdrop-filter: blur(18px);
 }
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
+
+.small-title {
+    letter-spacing: 5px;
+    font-size: 11px;
+    color: #c993e9;
+    margin-bottom: 18px;
 }
-.gallery img{
-width:100%;
-height:230px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 8px 25px #0005
+
+.lock-card h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 14vw, 76px);
+    line-height: .9;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 25px rgba(170, 70, 255, .35);
 }
-.gallery img:first-child{
-grid-column:span 2;
-height:350px
+
+.lock-card h1 span {
+    color: #b65cff;
 }
-video{
-width:100%;
-border-radius:20px
+
+.lock-card p {
+    margin: 22px 0 30px;
+    color: #cfc5d5;
+    font-size: 13px;
+    line-height: 1.8;
 }
-audio{width:100%}
-.letter{
-background:rgba(255,255,255,.06);
-padding:22px;
-border-radius:20px;
-font-size:18px;
-line-height:1.8
+
+.password-box {
+    display: flex;
+    gap: 8px;
 }
-.final{
-text-align:center;
-font-size:28px;
-padding:35px
+
+.password-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(190, 90, 255, .35);
+    outline: none;
+    background: #0b090d;
+    color: white;
+    text-align: center;
+    letter-spacing: 5px;
 }
-.small{opacity:.75;font-family:Arial,sans-serif;font-size:13px}
+
+.btn {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #8d35c8, #c35cff);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 25px rgba(170, 70, 255, .25);
+}
+
+.error {
+    color: #ff8ecf;
+    font-size: 12px;
+    margin-top: 14px;
+    min-height: 18px;
+}
+
+/* MAIN */
+
+#main {
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    min-height: 100vh;
+    padding: 90px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+}
+
+.section-number {
+    color: #a95de0;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 10vw, 72px);
+    line-height: .95;
+    margin-bottom: 25px;
+}
+
+.section-title span {
+    color: #b65cff;
+}
+
+.subtext {
+    color: #bdb2c2;
+    line-height: 1.9;
+    font-size: 13px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "♥";
+    position: absolute;
+    font-size: 180px;
+    color: rgba(170, 50, 220, .035);
+    z-index: -1;
+}
+
+.hero .eyebrow {
+    letter-spacing: 7px;
+    color: #b65cff;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(65px, 17vw, 130px);
+    line-height: .75;
+    margin-bottom: 30px;
+}
+
+.hero h2 span {
+    color: #b65cff;
+}
+
+.hero-message {
+    max-width: 560px;
+    margin: auto;
+    color: #cfc5d5;
+    line-height: 1.9;
+}
+
+.scroll-hint {
+    margin-top: 55px;
+    color: #9e8fa5;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* MUSIC */
+
+.music-card {
+    padding: 30px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #120d17, #08070a);
+    border: 1px solid rgba(182, 92, 255, .25);
+    box-shadow: 0 0 45px rgba(140, 50, 200, .10);
+}
+
+.music-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.album {
+    width: 90px;
+    height: 90px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    background:
+        radial-gradient(circle, #c05cff 0%, #7220a0 40%, #15091c 75%);
+    box-shadow: 0 0 35px rgba(177, 76, 255, .25);
+}
+
+.music-info h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.music-info p {
+    font-size: 11px;
+    color: #a99eae;
+}
+
+.music-player {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.music-player audio {
+    width: 100%;
+    height: 45px;
+}
+
+/* VIDEO */
+
+.video-card {
+    border-radius: 25px;
+    padding: 15px;
+    background: #0d0a0f;
+    border: 1px solid rgba(182, 92, 255, .22);
+    box-shadow: 0 0 45px rgba(120, 40, 180, .10);
+}
+
+.video-card video {
+    display: block;
+    width: 100%;
+    max-height: 720px;
+    border-radius: 18px;
+    background: black;
+}
+
+/* LETTER */
+
+.letter {
+    padding: 35px 28px;
+    border-radius: 25px;
+    background:
+        linear-gradient(rgba(18, 12, 20, .96), rgba(10, 8, 12, .98));
+    border: 1px solid rgba(182, 92, 255, .25);
+    box-shadow: 0 0 50px rgba(140, 50, 200, .10);
+}
+
+.letter-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: #d7a3f5;
+    margin-bottom: 30px;
+}
+
+.letter p {
+    color: #d5ccd8;
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 22px;
+}
+
+.letter .highlight {
+    color: #e7b3ff;
+}
+
+/* PHOTOS */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(182, 92, 255, .20);
+    background: #100b13;
+    aspect-ratio: 1 / 1;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.06);
+}
+
+/* FINAL */
+
+.final {
+    text-align: center;
+}
+
+.final-heart {
+    font-size: 55px;
+    color: #d85bb8;
+    text-shadow: 0 0 25px rgba(216, 91, 184, .4);
+    margin-bottom: 20px;
+}
+
+.final h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 12vw, 90px);
+    line-height: .9;
+}
+
+.final h2 span {
+    color: #b65cff;
+}
+
+.final p {
+    max-width: 560px;
+    margin: 28px auto;
+    color: #c5bacb;
+    line-height: 1.9;
+}
+
+/* MUSIC FLOAT */
+
+#musicFloat {
+    display: none;
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 50;
+    padding: 10px 13px;
+    border: 1px solid rgba(182, 92, 255, .25);
+    border-radius: 16px;
+    background: rgba(12, 9, 14, .92);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(140, 50, 200, .14);
+}
+
+#musicFloat audio {
+    width: 100%;
+    height: 36px;
+}
+
+/* ANIMATION */
+
+.fade {
+    animation: fadeIn 1.2s ease both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 75px 16px;
+    }
+
+    .password-box {
+        flex-direction: column;
+    }
+
+    .password-box .btn {
+        width: 100%;
+    }
+
+    .music-top {
+        align-items: flex-start;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .letter {
+        padding: 28px 20px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <!-- PASSWORD -->
-<div id="passwordPage" class="container">
-<div class="card center hero">
+<div id="lockscreen">
+    <div class="lock-card fade">
+        <div class="small-title">A LITTLE SURPRISE FOR YOU</div>
 
-<div class="heart">💌</div>
+        <h1>MY <span>BAEY</span></h1>
 
-<p class="small">A LITTLE SURPRISE FOR YOU</p>
+        <p>
+            Ada sesuatu yang aku siapkan khusus untuk kamu.
+            Masukkan password untuk membuka semuanya. 💜
+        </p>
 
-<h1>My Baey 💜</h1>
+        <div class="password-box">
+            <input
+                type="password"
+                id="password"
+                inputmode="numeric"
+                placeholder="PASSWORD"
+                maxlength="6"
+            >
+            <button class="btn" onclick="openSurprise()">
+                BUKA
+            </button>
+        </div>
 
-<p>
-Ada sesuatu yang aku siapkan khusus untuk kamu...
-<br>
-Masukkan password untuk membukanya 🥹
-</p>
-
-<input
-id="password"
-type="password"
-placeholder="Masukkan password">
-
-<p id="error" style="color:#ffb6d5"></p>
-
-<button onclick="openGift()">
-Buka Kejutan ✨
-</button>
-
-<p class="small">
-25 tahun • satu orang favorit • banyak cerita
-</p>
-
-</div>
+        <div class="error" id="error"></div>
+    </div>
 </div>
 
 
-<!-- ISI KEJUTAN -->
-<div id="gift" class="container hidden">
+<!-- MAIN -->
+<main id="main">
 
-<div class="card center hero">
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container fade">
 
-<div class="heart">💜</div>
+            <div class="eyebrow">SPECIAL FOR YOU</div>
 
-<p class="small">HAPPY 25TH BIRTHDAY</p>
+            <h2>
+                HAI,<br>
+                <span>MY BAEY</span>
+            </h2>
 
-<h1>My Baey</h1>
+            <p class="hero-message">
+                Ada sedikit kejutan yang aku siapkan untuk kamu.
+                Nikmati semuanya pelan-pelan ya. 💜
+            </p>
 
-<h2>My Favorite Person in the World 🥳</h2>
+            <div class="scroll-hint">
+                ↓ SCROLL SLOWLY ↓
+            </div>
 
-<p>
-Hari ini adalah hari spesial untuk seseorang
-yang sangat berarti buat aku.
-</p>
-
-</div>
-
-
-<!-- FOTO -->
-<div class="card">
-
-<div class="center">
-<h2>📸 Our Little Memories</h2>
-
-<p class="small">
-Beberapa kenangan yang selalu bikin aku tersenyum 💜
-</p>
-</div>
-
-<div class="gallery">
-
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-<img src="foto5.jpg">
-<img src="foto6.jpg">
-
-</div>
-</div>
+        </div>
+    </section>
 
 
-<!-- LAGU -->
-<div class="card center">
+    <!-- MUSIC -->
+    <section id="music">
+        <div class="container fade">
 
-<h2>🎵 Lagu Untuk Kamu</h2>
+            <div class="section-number">01 / MUSIC</div>
 
-<p>
-Dengerin lagu ini sambil baca suratnya yaa 🥹💜
-</p>
+            <h2 class="section-title">
+                Lagu <span>untukmu</span>
+            </h2>
 
-<audio controls loop>
-<source src="Komang.mp3" type="audio/mpeg">
-</audio>
+            <p class="subtext">
+                Putar lagunya dan lanjutkan kejutan ini perlahan. 🎵
+            </p>
 
-<p class="small">
-Komang — Raim Laode
-</p>
+            <br>
 
-</div>
+            <div class="music-card">
 
+                <div class="music-top">
 
-<!-- VIDEO -->
-<div class="card">
+                    <div class="album">
+                        ♫
+                    </div>
 
-<div class="center">
-<h2>🎥 A Little Video For You</h2>
-</div>
+                    <div class="music-info">
+                        <h3>Komang</h3>
+                        <p>Special song for my baey 💜</p>
+                    </div>
 
-<video controls playsinline>
-<source src="video.mp4" type="video/mp4">
-</video>
+                </div>
 
-</div>
+                <div class="music-player">
+                    <audio id="musicPlayer" controls loop>
+                        <source src="Komang.mp3" type="audio/mpeg">
+                        Browser kamu tidak mendukung pemutar audio.
+                    </audio>
+                </div>
 
+            </div>
 
-<!-- SURAT -->
-<div class="card">
-
-<div class="center">
-<h2>💌 Surat Kecil Untuk My Baey</h2>
-</div>
-
-<div class="letter">
-
-<p><b>
-Happy Birthday My Favorite Person in the world 💜
-</b></p>
-
-<p>
-Gk terasa ya sekarang km menginjak usia ke 25 tahun,
-ak harap di usia km kali ini bayak sekali kabar baik
-yang dateng ke kehidupan kamu, semoga segala harapan,
-impian, tujuan dan segala do'a yang sudah kamu langitkan
-di ijabah oleh Allah SWT. Aamiin, di usia km yang cukup
-matang matang sekarang semoga kamu kepribadian km bisa
-lebih baik lagi ya 🤗
-</p>
-
-<p>
-I'm so happy karna ini ulang tahun ke 2 kamu yang kita
-rayakan berdua, ak gk nyangka kita bisa sampai disini
-walaupun banyak ujiannya, banyak ributnya, banyak yang
-harus di rubah dari kita berdua, terimakasih karna kamu
-engga pernah menyerah sama ak, sama hubungan kita
-walaupun ak tau pasti berat buat kamu ngadepin aku
-di kala km sudah lelah sama kerjaan tapi harus
-ngadepin tantrum nya ak, hehehe makasih yaa sayangg 💕
-</p>
-
-<p>
-i'm so proud of you baeyy 👏 km keren sekalii sudah bisa
-sampai di titik inii, kamu keren memilih untuk bertahan
-dari pada menyerah, maaf yaa ak jarang memberikan kamu
-semangat, jarang mengapresiasi kerja keras mu karna
-tertutup ego ku, tapi kamu harus tau kalo setiap hari
-nya ak selalu bangga sama kamu, sama semua pencapaian
-dalam hidup mu, dari semua pahit manis kehidupan yang
-udah kamu jalanin, ak selalu bangga sama kamu baeyy💜
-</p>
-
-<p>
-Tolong tetap sama aku yaa, terus kalo ada waktu kita
-sempatkan untuk bertemu yaa baey hehe karna ak selalu
-dan selalu setiap hari nyaa rasa kangen nya nambah
-terus"an bertambah 🥹, dan tolong lebih terbuka sama ak
-apa pun itu sayang, mari wujudkan semua keinginan dan
-tujuan kita bareng" ya baey tanpa ada orang ke 3 atau
-pun pengganggu dalam hubungan kita.
-</p>
-
-<p>
-i wanna hug you and say
-<b>
-"happy birthday my fav person,
-i love you and always loving you"
-</b> 🫶🥳
-</p>
-
-</div>
-</div>
+        </div>
+    </section>
 
 
-<!-- PENUTUP -->
-<div class="card final">
+    <!-- VIDEO -->
+    <section id="video">
+        <div class="container fade">
 
-💜 🥹 💜
+            <div class="section-number">02 / VIDEO</div>
 
-<h2>
-Happy Birthday, My Baey 🎂
-</h2>
+            <h2 class="section-title">
+                A little <span>memory</span>
+            </h2>
 
-<p>
-Semoga usia 25 ini membawa banyak kebahagiaan,
-kabar baik, rezeki, kesehatan, dan semua hal
-yang kamu impikan.
-</p>
+            <p class="subtext">
+                Sebuah video kecil untuk seseorang yang spesial. 🎬
+            </p>
 
-<p>
-Tetap jadi kamu yang aku kenal,
-dan semoga kita terus punya banyak cerita
-untuk dirayakan bersama. 🫶
-</p>
+            <br>
 
-<h2>
-I Love You 💜
-</h2>
+            <div class="video-card">
+                <video controls playsinline preload="metadata">
+                    <source src="video.mp4" type="video/mp4">
+                    Browser kamu tidak mendukung video.
+                </video>
+            </div>
 
-<p>
-Forever your favorite person 🥰
-</p>
+        </div>
+    </section>
 
-</div>
 
+    <!-- LETTER -->
+    <section id="letter">
+        <div class="container fade">
+
+            <div class="section-number">03 / LETTER</div>
+
+            <h2 class="section-title">
+                Surat <span>untukmu</span>
+            </h2>
+
+            <div class="letter">
+
+                <div class="letter-heading">
+                    Happy Birthday My Favorite Person in the world 💜
+                </div>
+
+                <p>
+                    Gk terasa ya sekarang km menginjak usia ke-25 tahun, ak harap di usia km kali ini banyak sekali kabar baik yang dateng ke kehidupan kamu, semoga segala harapan, impian, tujuan dan segala doa yang sudah kamu langitkan diijabah oleh Allah SWT. Aamiin, di usia km yang cukup matang sekarang semoga kepribadian km bisa lebih baik lagi ya 🤗
+                </p>
+
+                <p>
+                    I'm so happy karna ini ulang tahun ke-2 kamu yang kita rayakan berdua, gk nyangka kita bisa sampai di sini walaupun banyak ujiannya, banyak ributnya, banyak yang harus diubah dari kita berdua, terimakasih karna kamu engga pernah menyerah sama ak, sama hubungan kita, walaupun ak tau pasti berat buat kamu ngadepin aku di kala km sudah lelah sama kerjaan tapi harus ngadepin tantrum-nya ak, hehehe makasih yaa sayangg 💕
+                </p>
+
+                <p>
+                    I'm so proud of you baeyy 👏 km keren sekalii sudah bisa sampai di titik ini, kamu keren memilih untuk bertahan daripada menyerah, maaf yaa ak jarang memberikan kamu semangat, jarang mengapresiasi kerja kerasmu karna tertutup ego ku, tapi kamu harus tau kalo setiap harinya ak selalu bangga sama kamu, sama semua pencapaian dalam hidupmu, dari semua pahit manis kehidupan yang udah kamu jalanin, ak selalu bangga sama kamu baeyy 💜
+                </p>
+
+                <p>
+                    Tolong tetap sama aku yaa, terus kalo ada waktu kita sempatkan untuk bertemu yaa baey hehe karna ak selalu dan selalu setiap harinya rasa kangen-nya nambah terus-terusan bertambah 🥹, dan tolong lebih terbuka sama ak apa pun itu sayang, mari wujudkan semua keinginan dan tujuan kita bareng-bareng ya baey tanpa ada orang ketiga atau pun pengganggu dalam hubungan kita.
+                </p>
+
+                <p>
+                    i wanna hug you and say
+                    <span class="highlight">
+                        "happy birthday my fav person, i love you and always loving you"
+                    </span>
+                    🫶🥳
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PHOTOS -->
+    <section id="photos">
+        <div class="container fade">
+
+            <div class="section-number">04 / MEMORIES</div>
+
+            <h2 class="section-title">
+                Our <span>memories</span>
+            </h2>
+
+            <p class="subtext">
+                Beberapa kenangan yang selalu ingin aku simpan. 📸
+            </p>
+
+            <br>
+
+            <div class="gallery">
+
+                <div class="photo">
+                    <img src="foto1.jpg" alt="Memory 1">
+                </div>
+
+                <div class="photo">
+                    <img src="foto2.jpg" alt="Memory 2">
+                </div>
+
+                <div class="photo">
+                    <img src="foto3.jpg" alt="Memory 3">
+                </div>
+
+                <div class="photo">
+                    <img src="foto4.jpg" alt="Memory 4">
+                </div>
+
+                <div class="photo">
+                    <img src="foto5.jpg" alt="Memory 5">
+                </div>
+
+                <div class="photo">
+                    <img src="foto6.jpg" alt="Memory 6">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="final">
+        <div class="container fade">
+
+            <div class="final-heart">♥</div>
+
+            <h2>
+                SELAMAT<br>
+                ULANG TAHUN,<br>
+                <span>MY BAEY!</span>
+            </h2>
+
+            <p>
+                Semoga hari ini menjadi salah satu hari
+                yang paling indah untuk kamu. 💜
+            </p>
+
+            <div class="scroll-hint">
+                MADE WITH LOVE
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- FLOATING MUSIC -->
+<div id="musicFloat">
+    <audio id="musicFloatPlayer" controls loop>
+        <source src="Komang.mp3" type="audio/mpeg">
+    </audio>
 </div>
 
 
 <script>
 
-function openGift(){
+const PASSWORD = "210801";
 
-let password =
-document.getElementById("password").value;
+function openSurprise() {
 
-if(password === "210801"){
+    const input = document.getElementById("password");
+    const error = document.getElementById("error");
 
-document.getElementById("passwordPage")
-.classList.add("hidden");
+    if (input.value === PASSWORD) {
 
-document.getElementById("gift")
-.classList.remove("hidden");
+        document.getElementById("lockscreen").style.display = "none";
+        document.getElementById("main").style.display = "block";
+        document.getElementById("musicFloat").style.display = "block";
 
-window.scrollTo(0,0);
+        const music = document.getElementById("musicPlayer");
+        const floatMusic = document.getElementById("musicFloatPlayer");
 
-}else{
+        music.volume = 0.65;
+        floatMusic.volume = 0.65;
 
-document.getElementById("error").innerText =
-"Password belum benar, coba lagi yaa 💜";
+        /*
+         * Browser HP biasanya mengizinkan audio
+         * dimulai karena tombol BUKA ditekan.
+         */
+        music.play().then(() => {
 
+            floatMusic.currentTime = music.currentTime;
+
+        }).catch(() => {
+            // Jika browser menolak autoplay,
+            // pengguna tinggal menekan tombol play.
+        });
+
+        /*
+         * Menjaga kedua kontrol musik tetap sinkron.
+         */
+        music.addEventListener("play", () => {
+            floatMusic.currentTime = music.currentTime;
+            floatMusic.play().catch(() => {});
+        });
+
+        music.addEventListener("pause", () => {
+            floatMusic.pause();
+        });
+
+        floatMusic.addEventListener("play", () => {
+            music.currentTime = floatMusic.currentTime;
+            music.play().catch(() => {});
+        });
+
+        floatMusic.addEventListener("pause", () => {
+            music.pause();
+        });
+
+    } else {
+
+        error.textContent = "Password salah, coba lagi yaa 💜";
+        input.value = "";
+        input.focus();
+
+    }
 }
 
-}
 
-document.getElementById("password")
-.addEventListener("keydown",function(e){
+/*
+ * Bisa tekan Enter setelah memasukkan password.
+ */
+document.getElementById("password").addEventListener("keydown", function(e) {
 
-if(e.key==="Enter"){
-openGift();
-}
+    if (e.key === "Enter") {
+        openSurprise();
+    }
 
 });
 
