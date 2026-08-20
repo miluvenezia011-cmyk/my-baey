@@ -715,13 +715,13 @@ function openSurprise() {
 
         document.getElementById("lockscreen").style.display = "none";
         document.getElementById("main").style.display = "block";
-        document.getElementById("musicFloat").style.display = "block";
+        document.getElementById("musicFloat").style.display = "none";
 
         const music = document.getElementById("musicPlayer");
         const floatMusic = document.getElementById("musicFloatPlayer");
 
-        music.volume = 0.65;
-        floatMusic.volume = 0.65;
+        music.volume = 0.45;
+        floatMusic.volume = 0;
 
         /*
          * Browser HP biasanya mengizinkan audio
