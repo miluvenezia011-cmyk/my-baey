@@ -1,9 +1,352 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>For My Baey 💜</title>
-<style>body{margin:0;background:linear-gradient(135deg,#16091f,#5a2468);color:white;font-family:Georgia,serif}.wrap{max-width:760px;margin:auto;padding:20px}.card{background:#ffffff18;border:1px solid #ffffff30;border-radius:24px;padding:24px;margin-bottom:18px}.center{text-align:center}h1,h2{color:#f4ccff}p{font-family:system-ui;line-height:1.8}input,button{padding:13px;border:0;border-radius:12px;font-size:16px}button{background:#dc8dff;font-weight:bold;margin-top:8px}video{width:100%;border-radius:18px}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gallery img{width:100%;height:180px;object-fit:cover;border-radius:15px}#site{display:none}</style></head><body><div class="wrap">
-<div class="card center" id="lock"><div style="font-size:50px">💜</div><h1>For My Baey</h1><p>I have a little surprise for you...</p><input id="pw" type="password" placeholder="Password"><br><button onclick="unlock()">OPEN MY SURPRISE 💕</button><p id="err" style="display:none">Password salah 🥺</p></div>
-<div id="site"><div class="card center"><h1>Welcome, My Baey 💜</h1><p>This little page was made especially for you.</p></div>
-<div class="card"><h2>🎬 A Little Surprise</h2><video controls playsinline><source src="video.mp4" type="video/mp4"></video><p>🎵 All of Me — John Legend</p></div>
-<div class="card"><h2>💌 A Letter For You</h2><p>Happy Birthday, My Favorite Person in the World 💜</p><p>Gak terasa yaa, sekarang kamu sudah menginjak usia ke-25 tahun. Aku berharap di usia kamu kali ini, banyak sekali kabar baik yang datang ke kehidupan kamu. Semoga segala harapan, impian, tujuan, dan semua doa yang sudah kamu langitkan diijabah oleh Allah SWT. Aamiin 🤲🏻</p><p>Di usia kamu yang sudah semakin matang ini, semoga kepribadian kamu juga bisa menjadi lebih baik lagi yaa 🤗</p><p>I&#x27;m so happy karena ini adalah ulang tahun ke-2 kamu yang kita rayakan berdua. Aku gak nyangka kita bisa sampai di titik ini, walaupun banyak ujiannya, banyak ributnya, dan masih banyak hal yang harus kita ubah dari diri kita masing-masing.</p><p>Terima kasih karena kamu gak pernah menyerah sama aku, sama hubungan kita. Walaupun aku tahu pasti berat buat kamu menghadapi aku, apalagi di saat kamu sudah lelah sama kerjaan, tapi masih harus menghadapi tantrum-nya aku, hehehe.</p><p>Makasih yaa sayanggg 💕</p><p>I'm so proud of you, Baeyy 👏🏻 Kamu keren sekali sudah bisa sampai di titik ini. Kamu keren karena memilih untuk bertahan daripada menyerah. Maaf yaa aku jarang memberikan kamu semangat dan mengapresiasi kerja keras kamu karena sering tertutup sama ego aku. Tapi kamu harus tahu, setiap harinya aku selalu bangga sama kamu. 💜</p><p>Tolong tetap sama aku yaa. Mari kita wujudkan semua keinginan dan tujuan kita bareng-bareng, tanpa ada orang ketiga ataupun pengganggu dalam hubungan kita.</p></div>
-<div class="card"><h2>📸 Our Memories</h2><div class="gallery"><img src="foto1.jpg"><img src="foto2.jpg"><img src="foto3.jpg"><img src="foto4.jpg"><img src="foto5.jpg"><img src="foto6.jpg"></div></div>
-<div class="card center"><h1>Happy 25th Birthday, My Baey. 💜</h1><p>“Happy birthday, my fav person. I love you and I'm always loving you.” 🫶🏻🥳</p><h2>I love you. Always. 💜</h2></div></div></div>
-<script>function unlock(){if(document.getElementById('pw').value==='212121'){lock.style.display='none';site.style.display='block'}else err.style.display='block'}</script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk My Baey 💜</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Georgia,serif;
+color:white;
+background:
+radial-gradient(circle at top,#8d4b91,#32133e 45%,#100713);
+min-height:100vh;
+overflow-x:hidden
+}
+.container{max-width:800px;margin:auto;padding:20px}
+.card{
+background:rgba(255,255,255,.1);
+border:1px solid rgba(255,255,255,.2);
+backdrop-filter:blur(15px);
+border-radius:28px;
+padding:25px;
+margin:18px 0;
+box-shadow:0 15px 50px #0005
+}
+.center{text-align:center}
+.hidden{display:none}
+h1{font-size:55px;margin:15px 0}
+h2{color:#ffd9f5}
+p{font-size:17px;line-height:1.8}
+button{
+border:0;
+padding:15px 25px;
+border-radius:30px;
+font-weight:bold;
+font-size:16px;
+background:linear-gradient(135deg,#ffd2f1,#c68bd8);
+color:#351139
+}
+input{
+width:100%;
+padding:16px;
+border:0;
+border-radius:15px;
+font-size:18px;
+text-align:center;
+margin:15px 0
+}
+.hero{padding:40px 20px}
+.heart{
+font-size:65px;
+animation:pulse 1.5s infinite
+}
+@keyframes pulse{
+50%{transform:scale(1.15)}
+}
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+.gallery img{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 8px 25px #0005
+}
+.gallery img:first-child{
+grid-column:span 2;
+height:350px
+}
+video{
+width:100%;
+border-radius:20px
+}
+audio{width:100%}
+.letter{
+background:rgba(255,255,255,.06);
+padding:22px;
+border-radius:20px;
+font-size:18px;
+line-height:1.8
+}
+.final{
+text-align:center;
+font-size:28px;
+padding:35px
+}
+.small{opacity:.75;font-family:Arial,sans-serif;font-size:13px}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="passwordPage" class="container">
+<div class="card center hero">
+
+<div class="heart">💌</div>
+
+<p class="small">A LITTLE SURPRISE FOR YOU</p>
+
+<h1>My Baey 💜</h1>
+
+<p>
+Ada sesuatu yang aku siapkan khusus untuk kamu...
+<br>
+Masukkan password untuk membukanya 🥹
+</p>
+
+<input
+id="password"
+type="password"
+placeholder="Masukkan password">
+
+<p id="error" style="color:#ffb6d5"></p>
+
+<button onclick="openGift()">
+Buka Kejutan ✨
+</button>
+
+<p class="small">
+25 tahun • satu orang favorit • banyak cerita
+</p>
+
+</div>
+</div>
+
+
+<!-- ISI KEJUTAN -->
+<div id="gift" class="container hidden">
+
+<div class="card center hero">
+
+<div class="heart">💜</div>
+
+<p class="small">HAPPY 25TH BIRTHDAY</p>
+
+<h1>My Baey</h1>
+
+<h2>My Favorite Person in the World 🥳</h2>
+
+<p>
+Hari ini adalah hari spesial untuk seseorang
+yang sangat berarti buat aku.
+</p>
+
+</div>
+
+
+<!-- FOTO -->
+<div class="card">
+
+<div class="center">
+<h2>📸 Our Little Memories</h2>
+
+<p class="small">
+Beberapa kenangan yang selalu bikin aku tersenyum 💜
+</p>
+</div>
+
+<div class="gallery">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+<img src="foto5.jpg">
+<img src="foto6.jpg">
+
+</div>
+</div>
+
+
+<!-- LAGU -->
+<div class="card center">
+
+<h2>🎵 Lagu Untuk Kamu</h2>
+
+<p>
+Dengerin lagu ini sambil baca suratnya yaa 🥹💜
+</p>
+
+<audio controls loop>
+<source src="Komang.mp3" type="audio/mpeg">
+</audio>
+
+<p class="small">
+Komang — Raim Laode
+</p>
+
+</div>
+
+
+<!-- VIDEO -->
+<div class="card">
+
+<div class="center">
+<h2>🎥 A Little Video For You</h2>
+</div>
+
+<video controls playsinline>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
+<!-- SURAT -->
+<div class="card">
+
+<div class="center">
+<h2>💌 Surat Kecil Untuk My Baey</h2>
+</div>
+
+<div class="letter">
+
+<p><b>
+Happy Birthday My Favorite Person in the world 💜
+</b></p>
+
+<p>
+Gk terasa ya sekarang km menginjak usia ke 25 tahun,
+ak harap di usia km kali ini bayak sekali kabar baik
+yang dateng ke kehidupan kamu, semoga segala harapan,
+impian, tujuan dan segala do'a yang sudah kamu langitkan
+di ijabah oleh Allah SWT. Aamiin, di usia km yang cukup
+matang matang sekarang semoga kamu kepribadian km bisa
+lebih baik lagi ya 🤗
+</p>
+
+<p>
+I'm so happy karna ini ulang tahun ke 2 kamu yang kita
+rayakan berdua, ak gk nyangka kita bisa sampai disini
+walaupun banyak ujiannya, banyak ributnya, banyak yang
+harus di rubah dari kita berdua, terimakasih karna kamu
+engga pernah menyerah sama ak, sama hubungan kita
+walaupun ak tau pasti berat buat kamu ngadepin aku
+di kala km sudah lelah sama kerjaan tapi harus
+ngadepin tantrum nya ak, hehehe makasih yaa sayangg 💕
+</p>
+
+<p>
+i'm so proud of you baeyy 👏 km keren sekalii sudah bisa
+sampai di titik inii, kamu keren memilih untuk bertahan
+dari pada menyerah, maaf yaa ak jarang memberikan kamu
+semangat, jarang mengapresiasi kerja keras mu karna
+tertutup ego ku, tapi kamu harus tau kalo setiap hari
+nya ak selalu bangga sama kamu, sama semua pencapaian
+dalam hidup mu, dari semua pahit manis kehidupan yang
+udah kamu jalanin, ak selalu bangga sama kamu baeyy💜
+</p>
+
+<p>
+Tolong tetap sama aku yaa, terus kalo ada waktu kita
+sempatkan untuk bertemu yaa baey hehe karna ak selalu
+dan selalu setiap hari nyaa rasa kangen nya nambah
+terus"an bertambah 🥹, dan tolong lebih terbuka sama ak
+apa pun itu sayang, mari wujudkan semua keinginan dan
+tujuan kita bareng" ya baey tanpa ada orang ke 3 atau
+pun pengganggu dalam hubungan kita.
+</p>
+
+<p>
+i wanna hug you and say
+<b>
+"happy birthday my fav person,
+i love you and always loving you"
+</b> 🫶🥳
+</p>
+
+</div>
+</div>
+
+
+<!-- PENUTUP -->
+<div class="card final">
+
+💜 🥹 💜
+
+<h2>
+Happy Birthday, My Baey 🎂
+</h2>
+
+<p>
+Semoga usia 25 ini membawa banyak kebahagiaan,
+kabar baik, rezeki, kesehatan, dan semua hal
+yang kamu impikan.
+</p>
+
+<p>
+Tetap jadi kamu yang aku kenal,
+dan semoga kita terus punya banyak cerita
+untuk dirayakan bersama. 🫶
+</p>
+
+<h2>
+I Love You 💜
+</h2>
+
+<p>
+Forever your favorite person 🥰
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openGift(){
+
+let password =
+document.getElementById("password").value;
+
+if(password === "210801"){
+
+document.getElementById("passwordPage")
+.classList.add("hidden");
+
+document.getElementById("gift")
+.classList.remove("hidden");
+
+window.scrollTo(0,0);
+
+}else{
+
+document.getElementById("error").innerText =
+"Password belum benar, coba lagi yaa 💜";
+
+}
+
+}
+
+document.getElementById("password")
+.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+openGift();
+}
+
+});
+
+</script>
+
+</body>
+</html>
